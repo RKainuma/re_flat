@@ -141,6 +141,7 @@ Monthly 2.2.2 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 					}else{
 						let selector_id = '#dt'+thisDate.getFullYear()+("00" + (thisDate.getMonth()+1)).slice(-2)+ ("00" + (thisDate.getDate()-1)).slice(-2);
 						$(selector_id).addClass('selectable');
+						$(selector_id).children('div.monthly-indicator-wrap').prop('id', 'on'+thisDate.getFullYear()+("00" + (thisDate.getMonth()+1)).slice(-2)+ ("00" + (thisDate.getDate())).slice(-2));
 					}
 
 				} else {
@@ -165,11 +166,13 @@ Monthly 2.2.2 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 					$('#dt'+begi_of_month).addClass('unselectable');
 				}else{
 					$('#dt'+begi_of_month).addClass('selectable');
+					$('#dt'+begi_of_month).children('div.monthly-indicator-wrap').prop('id', 'on'+target_date.getFullYear()+("00" + (target_date.getMonth()+1)).slice(-2)+ ("00" + (target_date.getDate())).slice(-2));
 				}
 			} else if(target_date.getTime() > next_month.getTime()){
 					$('#dt'+begi_of_month).addClass('unselectable');
 			}else{
 					$('#dt'+begi_of_month).addClass('selectable');
+					$('#dt'+begi_of_month).children('div.monthly-indicator-wrap').prop('id', 'on'+target_date.getFullYear()+("00" + (target_date.getMonth()+1)).slice(-2)+ ("00" + (target_date.getDate())).slice(-2));
 			}
 
 			if (settingCurrentMonth) {

@@ -19,6 +19,11 @@ $(function () {
     })
 });
 
+// Append avairabilities to dates on calender
+$(document).ready( function(){
+    // $('#on20190815').text('fuga');
+});
+
 // Insert lessons to DB
 $(function () {
     db = firebase.firestore();
@@ -30,7 +35,7 @@ $(function () {
         let tel_num = $("#tel").val();
         let email = $("#email").val();
 
-        let email_contents = '<p>予約内容↓</p>'
+        let email_contents = '<p>予約内容</p>'
                             +'<p>**************************************************************</p>'
                             +'<table><tr><td>予約日:</td><td>'+selected_date+'</td></tr>'
                             +'<tr><td>予約コース:</td><td>'+selected_course+'</td></tr>'
@@ -61,7 +66,7 @@ $(function () {
                     })
                         .then(function (docRef) {
                             console.log("Document written with ID: ", docRef.id);
-                            $.post(EMAIL_FUNCTIONS_URL+'?adding_sbj='+name_of_person+'&msg_cnt='+email_contents)
+                            $.post('https://us-central1-tk-page.cloudfunctions.net/sendMailer'+'?adding_sbj='+name_of_person+'&msg_cnt='+email_contents)
                             alert('申し込みが完了しました。')
                             location.reload();
                         })
